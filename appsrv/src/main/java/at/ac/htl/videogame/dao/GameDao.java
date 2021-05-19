@@ -15,4 +15,10 @@ public class GameDao {
     public List<Game> games() {
         return em.createQuery("select g from Game g order by g.name", Game.class).getResultList();
     }
+    public Game get(int id) {
+        return em.find(Game.class, id);
+    }
+    public void update(Game game) {
+        em.merge(game);
+    }
 }

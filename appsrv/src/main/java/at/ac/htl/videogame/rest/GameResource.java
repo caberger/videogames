@@ -5,6 +5,7 @@ import at.ac.htl.videogame.model.Game;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -18,5 +19,16 @@ public class GameResource {
     @GET
     public List<Game> games() {
         return dao.games();
+    }
+    @PUT
+    public Game update(Game game) {
+        /*
+        Game existingGame = dao.get(game.getGameId());
+        existingGame.setName(game.getName());
+        existingGame.setDescription(game.getDescription());
+
+         */
+        dao.update(game);
+        return game;
     }
 }

@@ -1,23 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Videogames</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script type="module" src="src/index.js"></script>
 </head>
+
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody id="body">
-        </tbody>
-    </table>
+    <div class="w3-content">
+        <div class="w3-panel">
+            <table class="w3-table-all">
+                <caption>Meine Spiele</caption>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="dlg" class="w3-modal w3-animate-opacity">
+        <input type="hidden" id="game-id"/>
+        <div class="w3-modal-content w3-card-4">
+            <header class="w3-container w3-teal">
+                <span onclick="document.getElementById('dlg').style.display='none'"
+                    class="w3-button w3-large w3-display-topright">&times;</span>
+                <h2 id="header"></h2>
+            </header>
+            <div class="w3-container">
+                <div class="w3-container">
+                    <div class="w3-panel">
+                        <input class="w3-input" type="text" id="game-name" placeholder="Name" />
+                    </div>
+                </div>
+                <div class="w3-container">
+                    <div class="w3-panel">
+                        <input class="w3-input" type="text" id="game-description" placeholder="Beschreibung" />
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <footer class="w3-container w3-light-grey">
+                <p><input id="save" class="w3-button" type="button" value="Speichern"></p>
+            </footer>
+        </div>
+    </div>
+    </div>
 </body>
+
 </html>
