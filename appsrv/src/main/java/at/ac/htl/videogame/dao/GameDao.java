@@ -13,6 +13,6 @@ public class GameDao {
     EntityManager em;
 
     public List<Game> games() {
-        return em.createQuery("select g from Game order by name", Game.class).getResultList();
+        return em.createQuery("select g from Game g order by g.name", Game.class).getResultList();
     }
 }
