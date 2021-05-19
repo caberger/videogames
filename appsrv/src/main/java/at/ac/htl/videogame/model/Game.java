@@ -1,9 +1,6 @@
 package at.ac.htl.videogame.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -13,6 +10,9 @@ public class Game {
     private int gameId;
     private String name;
     private String description;
+
+    @ManyToOne
+    private Publisher publisher;
 
     public int getGameId() {
         return gameId;
@@ -37,4 +37,13 @@ public class Game {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 }
+

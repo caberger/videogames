@@ -15,5 +15,5 @@ export async function saveGame(game) {
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify(game)
-      })    
+      })
 }

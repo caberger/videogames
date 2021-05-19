@@ -1,6 +1,7 @@
 package at.ac.htl.videogame.dao;
 
 import at.ac.htl.videogame.model.Game;
+import at.ac.htl.videogame.model.Publisher;
 
 import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
@@ -19,6 +20,8 @@ public class GameDao {
         return em.find(Game.class, id);
     }
     public void update(Game game) {
+        Publisher publisher = em.find(Publisher.class, game.getPublisher().getPublisherId());
+        game.setPublisher(publisher);
         em.merge(game);
     }
 }

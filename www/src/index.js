@@ -3,20 +3,25 @@ import {loadGames, saveGame} from "./rest.js"
 console.log("uff...")
 
 const start = async e => {
-    const body = document.getElementById("body")
     console.log("body is:", body)
 
+    setupUI()
+    render()
+}
+async function render() {
     const games = await loadGames()
+    const body = document.getElementById("body")
+    body.innerHTML = ""
     games.forEach(game => {
         const row = body.insertRow()
         row.innerHTML = `
             <td>${game.gameId}</td>
             <td>${game.name}</td>
             <td>${game.description}</td>
+            <td>${game.publisher.name}</td>
         `
         row.addEventListener("click", e => rowSelected(game))
     })
-    setupUI()
 }
 function rowSelected(game) {
     const hidden = document.getElementById("game-id")
@@ -44,9 +49,14 @@ async function save() {
     const game = {
         gameId: hidden.value,
         name,
-        description
+        description,
+        publisher: {
+            name: "fake",
+            publisherId: 10001
+        }
     }
-    const response = await saveGame()
-    const json = await response.json()
+    await saveGame(game)
+    dlg.style = "display:none"
     console.log("saved...")
+    render()
 }
